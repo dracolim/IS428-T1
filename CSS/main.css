@@ -1,3 +1,12 @@
 body {
-    background-color: #FFFFF5;
+    background-color: #f3f3f3;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    background-color: #ea1313;
 }
