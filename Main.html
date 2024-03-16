@@ -9,9 +9,20 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Flowbite -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <!-- Embedding API -->
+    <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+
 </head>
 
-<body>
+<body class="bg-grey-100 mb-12" style="font-family: DM Sans;">
     <div class="flex justify-center items-center">
         <!-- Header -->
         <div class="bg-white py-6">
@@ -38,11 +49,82 @@
                 </div>
             </div>
         </div>
-
-        <!--BODY -->
-
     </div>
 
+    <!--BODY -->
+    <div class="mt-3 ml-4">
+        <!-- Title -->
+        <div class="ml-2 mb-4">
+            <p class="text-lg font-bold">Mental Health Dashboard</p>
+            <p class="text-sm">Our Findings and Insights ...</p>
+        </div>
+
+        <!-- GRAPHS -->
+        <div class="">
+            <div class="container m-auto grid grid-cols-3 grid-rows-5 md:grid-cols-5 lg:grid-cols-8 gap-4">
+                <!-- Graph 1-->
+                <div
+                    class="p-5 tile bg-white col-span-full items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+                    <div class="flex flex-col">
+                        <div class="flex justify-between items-center">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Pollutant Concentration
+                                Analysis</h5>
+
+                            <a href="./Pages/graph1.html" type="button"
+                                class="px-3 py-1.5 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 inline-flex items-center">
+                                More
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"
+                                    class="ml-2">
+                                    <path fill="currentColor"
+                                        d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10s10-4.48 10-10m-10 1H8v-2h4V8l4 4l-4 4z" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div>
+                            <tableau-viz id="tableauViz"
+                                src='https://public.tableau.com/views/Assignment1_17089275484770/Task2?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link'>
+                            </tableau-viz>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="tile bg-amber-500 row-start-2 row-end-5 col-span-1 md:col-span-2 lg:col-span-3">
+                    <h1 class="tile-marker">TWO</h1>
+                </div>
+                <div
+                    class="tile bg-yellow-500 row-start-4 row-end-5 md:row-start-2 md:row-end-3 col-span-2 md:col-span-3 lg:col-span-5">
+                    <h1 class="tile-marker">THREE</h1>
+                </div>
+                <div class="tile bg-lime-600 lg:col-start-4 lg:col-span-2">
+                    <h1 class="tile-marker">FOUR</h1>
+                </div>
+                <div class="tile bg-green-600">
+                    <h1 class="tile-marker">FIVE</h1>
+                </div>
+                <div class="tile bg-emerald-500">
+                    <h1 class="tile-marker">SIX</h1>
+                </div>
+                <div class="tile bg-teal-500">
+                    <h1 class="tile-marker">SEVEN</h1>
+                </div>
+                <div class="tile bg-purple-500">
+                    <h1 class="tile-marker">EIGHT</h1>
+                </div>
+                <div class="tile bg-pink-500 row-start-5 md:col-span-full">
+                    <h1 class="tile-marker">NINE</h1>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+        </div>
 
 
 
@@ -60,7 +142,10 @@
 
 
 
-    <script src="bundle.js"></script>
+
+
+
+        <script src="bundle.js"></script>
 </body>
 
 </html>

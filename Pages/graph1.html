@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mental Health</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/d3@5.6.0/dist/d3.min.js"></script>
+    <link rel="stylesheet" href="../CSS/main.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Flowbite -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <!-- Embedding API -->
+    <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+
+</head>
+
+<body class="bg-grey-100 mb-12" style="font-family: DM Sans;">
+    <div class="flex justify-center items-center">
+        <!-- Header -->
+        <div class="bg-white py-6">
+            <div class="flex mx-12">
+                <div class="flex-none ml-12">
+                    <img src="../Images/OSMI-Logo-Medium.png" alt="OSMI Logo" class="size-32">
+                </div>
+
+                <div class="text-center">
+                    <p class="text-md text-red-600 font-bold text-xl mb-2">
+                        OSMI MENTAL HEALTH IN TECH
+                    </p>
+                    <p class="text-md text-gray-700 text-md mb-2">
+                        Changing how we talk about mental health in the tech industry
+                    </p>
+                    <p class="text-md text-red-600 font-bold text-sm mb-2">
+                        About the tech survey
+                    </p>
+                    <p class="text-md text-gray-700 text-xs md:mx-5 text-wrap">
+                        Currently over 1400 responses, the ongoing 2024 survey aims to measure attitudes towards mental
+                        health in the tech workplace, and examine the frequency of mental health disorders among tech
+                        workers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--BODY -->
+    <div class="mt-3 ml-4">
+
+        <a type="button" href="../Main.html"
+            class="mb-3 px-3 py-1.5 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24" class="mr-2">
+                <path fill="currentColor"
+                    d="M2 12c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 2 12 2S2 6.48 2 12m10-1h4v2h-4v3l-4-4l4-4z" />
+            </svg>
+            Back to Dashboard
+        </a>
+
+        <!-- GRAPHS -->
+        <div class="container m-auto grid gap-4">
+            <!-- Graph 1-->
+            <div
+                class="p-5 tile bg-white col-span-full items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+                <div class="flex flex-col">
+
+                    <div class="flex justify-between items-center">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Pollutant Concentration
+                            Analysis</h5>
+                    </div>
+
+                    <div>
+                        <tableau-viz id="tableauViz"
+                            src='https://public.tableau.com/views/Assignment1_17089275484770/Task2?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link'>
+                        </tableau-viz>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABOUT THE GRAPH -->
+        <div class="mx-12 text-left mt-4">
+            <div class="mt-5">
+                <p class="font-bold text-md">
+                    About this Graph
+                </p>
+                <p class="text-sm">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis corporis asperiores ullam quos
+                    optio
+                    at, distinctio dolor delectus, ipsa libero itaque doloribus soluta quas sunt quis pariatur rerum
+                    iste
+                    possimus.
+                </p>
+            </div>
+
+            <div class="mt-5">
+                <p class="font-bold text-md">
+                    About this Graph
+                </p>
+                <p class="text-sm">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis corporis asperiores ullam quos
+                    optio
+                    at, distinctio dolor delectus, ipsa libero itaque doloribus soluta quas sunt quis pariatur rerum
+                    iste
+                    possimus.
+                </p>
+            </div>
+
+            <div class="mt-5">
+                <p class="font-bold text-md">
+                    About this Graph
+                </p>
+                <p class="text-sm">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis corporis asperiores ullam quos
+                    optio
+                    at, distinctio dolor delectus, ipsa libero itaque doloribus soluta quas sunt quis pariatur rerum
+                    iste
+                    possimus.
+                </p>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="bundle.js"></script>
+</body>
+
+</html>
