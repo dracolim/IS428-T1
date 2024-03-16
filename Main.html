@@ -22,9 +22,9 @@
 
 </head>
 
-<body class="bg-grey-100 mb-12" style="font-family: DM Sans;">
+<body class="bg-grey-100" style="font-family: DM Sans;">
+    <!-- Header -->
     <div class="flex justify-center items-center">
-        <!-- Header -->
         <div class="bg-white py-6">
             <div class="flex mx-12">
                 <div class="flex-none ml-12">
@@ -52,100 +52,223 @@
     </div>
 
     <!--BODY -->
-    <div class="mt-3 ml-4">
-        <!-- Title -->
-        <div class="ml-2 mb-4">
-            <p class="text-lg font-bold">Mental Health Dashboard</p>
-            <p class="text-sm">Our Findings and Insights ...</p>
-        </div>
+    <div>
+        <!-- NAV BAR -->
+        <nav class="bg-red-600 w-full start-0">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-3">
 
-        <!-- GRAPHS -->
-        <div class="">
-            <div class="container m-auto grid grid-cols-3 grid-rows-5 md:grid-cols-5 lg:grid-cols-8 gap-4">
-                <!-- Graph 1-->
-                <div
-                    class="p-5 tile bg-white col-span-full items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
-                    <div class="flex flex-col">
-                        <div class="flex justify-between items-center">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Pollutant Concentration
-                                Analysis</h5>
-
-                            <a href="./Pages/graph1.html" type="button"
-                                class="px-3 py-1.5 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 inline-flex items-center">
-                                More
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"
-                                    class="ml-2">
-                                    <path fill="currentColor"
-                                        d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10s10-4.48 10-10m-10 1H8v-2h4V8l4 4l-4 4z" />
-                                </svg>
-                            </a>
-                        </div>
-
-                        <div>
-                            <tableau-viz id="tableauViz"
-                                src='https://public.tableau.com/views/Assignment1_17089275484770/Task2?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link'>
-                            </tableau-viz>
-                        </div>
-                    </div>
+                <div class="items-end flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                    <button data-collapse-toggle="navbar-sticky" type="button"
+                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-200 focus:ou tline-none focus:ring-2 focus:ring-gray-200"
+                        aria-controls="navbar-sticky" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 17 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 1h15M1 7h15M1 13h15" />
+                        </svg>
+                    </button>
                 </div>
 
+                <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                    <ul
+                        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-red-600">
+                        <li>
+                            <a href="#problem-statement"
+                                class="block py-2 px-3 text-white bg-red-600 rounded md:bg-transparent md:text-white md:p-0"
+                                aria-current="page">Problem Statement</a>
+                        </li>
+                        <li>
+                            <a href="#motivation"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">Motivation</a>
+                        </li>
+                        <li>
+                            <a href="#demographic-dasboard"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">Demographic
+                                Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#findings"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">Our
+                                Findings</a>
+                        </li>
+                        <li>
+                            <a href="#recommendations"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">Recommendations</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-                <div class="tile bg-amber-500 row-start-2 row-end-5 col-span-1 md:col-span-2 lg:col-span-3">
-                    <h1 class="tile-marker">TWO</h1>
-                </div>
-                <div
-                    class="tile bg-yellow-500 row-start-4 row-end-5 md:row-start-2 md:row-end-3 col-span-2 md:col-span-3 lg:col-span-5">
-                    <h1 class="tile-marker">THREE</h1>
-                </div>
-                <div class="tile bg-lime-600 lg:col-start-4 lg:col-span-2">
-                    <h1 class="tile-marker">FOUR</h1>
-                </div>
-                <div class="tile bg-green-600">
-                    <h1 class="tile-marker">FIVE</h1>
-                </div>
-                <div class="tile bg-emerald-500">
-                    <h1 class="tile-marker">SIX</h1>
-                </div>
-                <div class="tile bg-teal-500">
-                    <h1 class="tile-marker">SEVEN</h1>
-                </div>
-                <div class="tile bg-purple-500">
-                    <h1 class="tile-marker">EIGHT</h1>
-                </div>
-                <div class="tile bg-pink-500 row-start-5 md:col-span-full">
-                    <h1 class="tile-marker">NINE</h1>
-                </div>
+
+        <!-- BODY -->
+        <div class="container mx-auto">
+            <!-- Problem Statement -->
+            <div class="my-4 ml-2" id="problem-statement">
+                <p class="text-lg font-bold">Problem Statement</p>
+                <p class="text-sm">The tech industry is known for its rapid pace, high demands, and often intense work
+                    environment. Within this context, mental health concerns have increasingly come to the forefront.
+                    Despite organisations efforts to address mental health issues in the workplace, there remains a
+                    significant gap in understanding the specific challenges and needs of individuals employed in the
+                    tech
+                    industry.
+                </p>
+                <p class="text-sm mt-2">
+                    The objective of this study is to formulate actionable recommendations to efficiently identify and
+                    mitigate individual mental health needs within the tech industry. Our focus is on enhancing the
+                    general
+                    well-being and productivity of employees through targeted interventions and support mechanisms</p>
+            </div>
+
+            <!-- Motivation -->
+            <div class="my-4 ml-2" id="motivation">
+                <p class="text-lg font-bold">Motivation</p>
+                <p class="text-sm">The tech industry is known for its rapid pace, high demands, and often intense work
+                    environment. Within this context, mental health concerns have increasingly come to the forefront.
+                    Despite organisations efforts to address mental health issues in the workplace, there remains a
+                    significant gap in understanding the specific challenges and needs of individuals employed in the
+                    tech
+                    industry.
+                </p>
+                <p class="text-sm mt-2">
+                    The objective of this study is to formulate actionable recommendations to efficiently identify and
+                    mitigate individual mental health needs within the tech industry. Our focus is on enhancing the
+                    general
+                    well-being and productivity of employees through targeted interventions and support mechanisms</p>
             </div>
 
 
+            <!-- Dashboard -->
+            <div class="ml-2 mb-4" id="demographic-dasboard">
+                <p class="text-lg font-bold">Mental Health Dashboard</p>
+                <p class="text-sm">Our Findings and Insights ...</p>
+            </div>
+
+            <!-- GRAPHS -->
+            <div class="">
+                <div class="container m-auto grid grid-cols-3 grid-rows-5 md:grid-cols-5 lg:grid-cols-8 gap-2">
+                    <!-- Graph 1-->
+                    <div
+                        class="p-5 tile bg-white col-span-full items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+                        <div class="flex flex-col">
+                            <div class="flex justify-between items-center">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Pollutant Concentration
+                                    Analysis</h5>
+
+                                <a href="./Pages/graph1.html" type="button"
+                                    class="px-3 py-1.5 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 inline-flex items-center">
+                                    More
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
+                                        viewBox="0 0 24 24" class="ml-2">
+                                        <path fill="currentColor"
+                                            d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10s10-4.48 10-10m-10 1H8v-2h4V8l4 4l-4 4z" />
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <div>
+                                <tableau-viz id="tableauViz" style="height: 350px;"
+                                    src='https://public.tableau.com/views/Assignment1_17089275484770/Task2?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link'>
+                                </tableau-viz>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graph 2-->
+                    <div
+                        class="p-5 tile bg-white row-start-3 row-end-5 md:row-start-2 md:row-end-3 col-span-2 md:col-span-3 lg:col-span-3 items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+                        <div class="flex flex-col">
+                            <div class="flex justify-between items-center">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Pollutant Concentration
+                                    Analysis</h5>
+
+                                <a href="./Pages/graph1.html" type="button"
+                                    class="px-3 py-1.5 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 inline-flex items-center">
+                                    More
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
+                                        viewBox="0 0 24 24" class="ml-2">
+                                        <path fill="currentColor"
+                                            d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10s10-4.48 10-10m-10 1H8v-2h4V8l4 4l-4 4z" />
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <div>
+                                <tableau-viz id="tableauViz" style="height: 350px;"
+                                    src='https://public.tableau.com/views/Assignment1_17089275484770/Task2?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link'>
+                                </tableau-viz>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graph 3-->
+                    <div
+                        class="p-5 tile bg-white row-start-3 row-end-5 md:row-start-2 md:row-end-3 col-span-2 md:col-span-3 lg:col-span-5 items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+                        <div class="flex flex-col">
+                            <div class="flex justify-between items-center">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Pollutant Concentration
+                                    Analysis</h5>
+
+                                <a href="./Pages/graph1.html" type="button"
+                                    class="px-3 py-1.5 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 inline-flex items-center">
+                                    More
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
+                                        viewBox="0 0 24 24" class="ml-2">
+                                        <path fill="currentColor"
+                                            d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10s10-4.48 10-10m-10 1H8v-2h4V8l4 4l-4 4z" />
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <div>
+                                <tableau-viz id="tableauViz" style="height: 350px;"
+                                    src='https://public.tableau.com/views/Assignment1_17089275484770/Task2?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link'>
+                                </tableau-viz>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Findings -->
+            <div class="my-4 ml-2" id="findings">
+                <p class="text-lg font-bold">Findings</p>
+                <p class="text-sm">The tech industry is known for its rapid pace, high demands, and often intense work
+                    environment. Within this context, mental health concerns have increasingly come to the forefront.
+                    Despite organisations efforts to address mental health issues in the workplace, there remains a
+                    significant gap in understanding the specific challenges and needs of individuals employed in the
+                    tech
+                    industry.
+                </p>
+                <p class="text-sm mt-2">
+                    The objective of this study is to formulate actionable recommendations to efficiently identify and
+                    mitigate individual mental health needs within the tech industry. Our focus is on enhancing the
+                    general
+                    well-being and productivity of employees through targeted interventions and support mechanisms</p>
+            </div>
 
 
-
-
-
-
+            <!-- Recommendations -->
+            <div class="my-4 ml-2" id="recommendations">
+                <p class="text-lg font-bold">Recommendations</p>
+                <p class="text-sm">The tech industry is known for its rapid pace, high demands, and often intense work
+                    environment. Within this context, mental health concerns have increasingly come to the forefront.
+                    Despite organisations efforts to address mental health issues in the workplace, there remains a
+                    significant gap in understanding the specific challenges and needs of individuals employed in the
+                    tech
+                    industry.
+                </p>
+                <p class="text-sm mt-2">
+                    The objective of this study is to formulate actionable recommendations to efficiently identify and
+                    mitigate individual mental health needs within the tech industry. Our focus is on enhancing the
+                    general
+                    well-being and productivity of employees through targeted interventions and support mechanisms</p>
+            </div>
         </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <script src="bundle.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 
 </html>
