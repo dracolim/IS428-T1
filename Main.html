@@ -54,7 +54,7 @@
     <!--BODY -->
     <div>
         <!-- NAV BAR -->
-        <nav class="bg-red-600 w-full start-0">
+        <nav class="bg-red-600 fixedw-full start-0">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-3">
 
                 <div class="items-end flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -105,7 +105,7 @@
         <!-- BODY -->
         <div class="container mx-auto">
             <!-- Problem Statement -->
-            <div class="my-4 ml-2" id="problem-statement">
+            <div class="mb-4 mt-6 ml-2" id="problem-statement">
                 <p class="text-lg font-bold">Problem Statement</p>
                 <p class="text-sm">The tech industry is known for its rapid pace, high demands, and often intense work
                     environment. Within this context, mental health concerns have increasingly come to the forefront.
@@ -124,30 +124,71 @@
             <!-- Motivation -->
             <div class="my-4 ml-2" id="motivation">
                 <p class="text-lg font-bold">Motivation</p>
-                <p class="text-sm">The tech industry is known for its rapid pace, high demands, and often intense work
-                    environment. Within this context, mental health concerns have increasingly come to the forefront.
-                    Despite organisations efforts to address mental health issues in the workplace, there remains a
-                    significant gap in understanding the specific challenges and needs of individuals employed in the
-                    tech
-                    industry.
-                </p>
-                <p class="text-sm mt-2">
-                    The objective of this study is to formulate actionable recommendations to efficiently identify and
-                    mitigate individual mental health needs within the tech industry. Our focus is on enhancing the
-                    general
-                    well-being and productivity of employees through targeted interventions and support mechanisms</p>
+
+                <div class="">
+                    <p class="text-sm font-bold">Why Mental Health Matters</p>
+                    <p class="text-sm">The mental well-being of individuals working in the tech industry directly
+                        impacts
+                        their performance, productivity, creativity, and overall job satisfaction, all crucial for
+                        success.
+                        Addressing mental health concerns can cultivate a more engaged and resilient workforce,
+                        ultimately
+                        benefiting both employees and employers.
+                    </p>
+                    <p class="text-sm mt-2">
+                        Prioritising mental health can boost talent retention and recruitment, as individuals feel
+                        supported
+                        and valued. Research from "The Role of Mental Health on Workplace Productivity: A Critical
+                        Review of
+                        the Literature", clearly shows that poor mental health (primarily depression and anxiety)
+                        correlates
+                        with reduced productivity through absenteeism and presenteeism. Additionally, stress, anxiety,
+                        and
+                        burnout were identified as key drivers of reduced productivity, with 45% of respondents saying
+                        that
+                        their mental health is negatively impacting their work (Champa Ha, 2023).
+                    </p>
+                </div>
+
+                <div class="mt-3">
+                    <p class="text-sm font-bold">A Personal and Professional Stake in Mental Health</p>
+                    <p class="text-sm">As individuals working in the tech sector, we are doubly invested in
+                        understanding mental health challenges within our industry.
+                    </p>
+                    <p class="text-sm mt-2">
+                        By understanding the complexities of mental health within our industry, not only is it
+                        professionally relevant but also personally meaningful. By shedding light on this important
+                        issue through data analytics and visualisations, we have the opportunity to drive positive
+                        change and create healthier, more supportive work environments for all.
+                    </p>
+                </div>
+
+                <div class="mt-3">
+                    <p class="text-sm font-bold">Lack of Mental Health Support</p>
+                    <p class="text-sm">A recent report by AON and TELUS Health, the "inaugural Asia Mental Health Index
+                        Report (2023)", which surveyed workers across 12 locations in Asia has revealed that a
+                        staggering 82% of workers in Asia are at a high to moderate risk for mental health issues.
+                    </p>
+                    <p class="text-sm mt-2">
+                        This alarming statistic was further compounded by significant barriers to accessing support.
+                        Nearly 43% of respondents cite cost as the biggest obstacle to accessing mental health support.
+                        This highlights financial limitations as one of the main causes of preventing individuals from
+                        seeking help. Additionally, a lack of information and knowledge about available resources also
+                        further hindered access to vital support systems for individuals to get help.
+                    </p>
+                </div>
+
             </div>
 
 
             <!-- Dashboard -->
-            <div class="ml-2 mb-4" id="demographic-dasboard">
-                <p class="text-lg font-bold">Mental Health Dashboard</p>
-                <p class="text-sm">Our Findings and Insights ...</p>
+            <div class="ml-2 mb-2" id="demographic-dasboard">
+                <p class="text-lg font-bold">Demographic Dashboard</p>
             </div>
 
             <!-- GRAPHS -->
             <div class="">
-                <div class="container m-auto grid grid-cols-3 grid-rows-5 md:grid-cols-5 lg:grid-cols-8 gap-2">
+                <div class="container m-auto grid grid-cols-3 grid-rows-2 md:grid-cols-5 lg:grid-cols-8 gap-2">
                     <!-- Graph 1-->
                     <div
                         class="p-5 tile bg-white col-span-full items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100">
@@ -249,7 +290,7 @@
 
 
             <!-- Recommendations -->
-            <div class="my-4 ml-2" id="recommendations">
+            <div class="mt-4 mb-12 ml-2" id="recommendations">
                 <p class="text-lg font-bold">Recommendations</p>
                 <p class="text-sm">The tech industry is known for its rapid pace, high demands, and often intense work
                     environment. Within this context, mental health concerns have increasingly come to the forefront.
@@ -264,11 +305,77 @@
                     general
                     well-being and productivity of employees through targeted interventions and support mechanisms</p>
             </div>
+
         </div>
+
+        <!-- Button to go to TOP -->
+        <button type="button" data-twe-ripple-init data-twe-ripple-color="light"
+            class="!fixed bottom-5 end-5 hidden rounded-full bg-black p-3 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg"
+            id="btn-back-to-top">
+            <span class="[&>svg]:w-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+                </svg>
+            </span>
+        </button>
+
+
+        <!-- FOOTER -->
+        <footer class="bg-red-600">
+            <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+                <div class="sm:flex sm:items-center sm:justify-between">
+                    <span class="flex text-sm text-white sm:text-center">
+                        <span class="font-bold">IS428</span> Visual Analytics for Business Intelligence
+
+                        <a href="https://github.com/dracolim/IS428-T1.git"
+                            class="text-white hover:text-gray-900 dark:hover:text-white ms-5">
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span class="sr-only">GitHub account</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </footer>
+
+
+
+
+
 
 
         <script src="bundle.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
+
+<script>
+    const mybutton = document.getElementById("btn-back-to-top");
+
+    const scrollFunction = () => {
+        if (
+            document.body.scrollTop > 20 ||
+            document.documentElement.scrollTop > 20
+        ) {
+            mybutton.classList.remove("hidden");
+        } else {
+            mybutton.classList.add("hidden");
+        }
+    };
+    const backToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+
+    mybutton.addEventListener("click", backToTop);
+
+    window.addEventListener("scroll", scrollFunction);
+</script>
 
 </html>
