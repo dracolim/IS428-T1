@@ -3,9 +3,10 @@
 
 <head>
     <title>Mental Health</title>
-    <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/d3@5.6.0/dist/d3.min.js"></script>
+    <!-- OTHER CSS-->
     <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="../Graphs/Demographics/demographic.css" />
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,6 +20,14 @@
         rel="stylesheet">
     <!-- Embedding API -->
     <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- D3.js -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+
 
 </head>
 
@@ -70,16 +79,14 @@
             <!-- Graph 1-->
             <div class="grid gap-4">
                 <div
-                    class="p-5 tile bg-white col-span-full items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+                    class="p-5 tile bg-white col-span-full items-center border border-gray-200 rounded-lg shadow">
 
                     <div class="flex justify-between items-center">
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">Territory</h5>
                     </div>
 
                     <div>
-                        <tableau-viz id="tableauViz" style="height: 350px;"
-                            src='https://public.tableau.com/views/Assignment1_17089275484770/Task2?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link'>
-                        </tableau-viz>
+                        <div id="sankey"></div>
                     </div>
                 </div>
             </div>
@@ -133,26 +140,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <script src="bundle.js"></script>
+        <script src="../Graphs/Demographics/d3.demograpics.userFiilter.js"></script>
 </body>
 
 </html>
