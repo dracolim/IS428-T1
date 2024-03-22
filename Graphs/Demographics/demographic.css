@@ -1,9 +1,0 @@
-.highlighted {
-  stroke: blue; /* Blue highlight for links */
-  fill: blue; /* Blue highlight for nodes */
-}
-
-.dimmed {
-  stroke-opacity: 0.1; /* Dimming for links */
-  fill-opacity: 0.3; /* Dimming for nodes */
-}

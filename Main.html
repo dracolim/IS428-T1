@@ -5,7 +5,7 @@
     <title>Mental Health</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/d3@5.6.0/dist/d3.min.js"></script>
-    <link rel="stylesheet" href="./CSS/main.css">
+
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,15 +14,21 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
+
     <!-- Embedding API -->
     <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+    <!-- D3.js -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+
+    <!-- TAB ICON -->
+    <link rel="icon" href="./Images/OSMI-Logo-Medium.png">
 
 </head>
 
-<body class="bg-grey-100" style="font-family: DM Sans;">
+<body style="font-family:caudex;">
     <!-- Header -->
     <div class="flex justify-center items-center">
         <div class="bg-white py-6">
@@ -52,7 +58,7 @@
     </div>
 
     <!--BODY -->
-    <div>
+    <div class="bg-gray-50">
         <!-- NAV BAR -->
         <nav class="bg-red-600 fixedw-full start-0">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-3">
@@ -105,8 +111,8 @@
         <!-- BODY -->
         <div class="container mx-auto px-32">
             <!-- Problem Statement -->
-            <div class="mb-6 mt-6 ml-2" id="problem-statement">
-                <p class="text-lg font-bold">Problem Statement</p>
+            <div class="mb-6 mt-8 ml-2" id="problem-statement">
+                <p class="text-2xl font-bold mb-4">Problem Statement</p>
                 <p class="text-sm">The tech industry is known for its rapid pace, high demands, and often intense work
                     environment. Within this context, mental health concerns have increasingly come to the forefront.
                     Despite organisations efforts to address mental health issues in the workplace, there remains a
@@ -123,10 +129,10 @@
 
             <!-- Motivation -->
             <div class="my-6 ml-2" id="motivation">
-                <p class="text-lg font-bold">Motivation</p>
-
+                <p class="text-2xl font-bold mb-4">Motivation</p>
                 <div class="">
-                    <p class="text-sm font-bold mb-2">Why Mental Health Matters</p>
+                    <img src="./Images/Mental health-cuate.png" class="mb-4 h-auto max-w-xs mx-auto">
+                    <p class="text-md font-bold mb-2 italic">Why Mental Health Matters</p>
                     <p class="text-sm">The mental well-being of individuals working in the tech industry directly
                         impacts
                         their performance, productivity, creativity, and overall job satisfaction, all crucial for
@@ -150,8 +156,9 @@
                     </p>
                 </div>
 
-                <div class="mt-4">
-                    <p class="text-sm font-bold mb-2">A Personal and Professional Stake in Mental Health</p>
+                <div class="">
+                    <img src="./Images/Enthusiastic-cuate.png" class="mt-4 mb-6 h-auto max-w-xs mx-auto">
+                    <p class="text-md font-bold mb-2 italic">A Personal and Professional Stake in Mental Health</p>
                     <p class="text-sm">As individuals working in the tech sector, we are doubly invested in
                         understanding mental health challenges within our industry.
                     </p>
@@ -163,15 +170,20 @@
                     </p>
                 </div>
 
-                <div class="mt-4">
-                    <p class="text-sm font-bold mb-2">Lack of Mental Health Support</p>
+                <div class="">
+                    <img src="./Images/Overwhelmed-cuate.png" class="mt-4 mb-6 h-auto max-w-xs mx-auto">
+                    <p class="text-md font-bold mb-2 italic">Lack of Mental Health Support</p>
                     <p class="text-sm">A recent report by AON and TELUS Health, the "inaugural Asia Mental Health Index
                         Report (2023)", which surveyed workers across 12 locations in Asia has revealed that a
                         staggering 82% of workers in Asia are at a high to moderate risk for mental health issues.
                     </p>
                     <p class="text-sm mt-3">
-                        This alarming statistic was further compounded by significant barriers to accessing support.
-                        Nearly 43% of respondents cite cost as the biggest obstacle to accessing mental health support.
+                        This alarming statistic was further compounded by significant barriers to accessing support.</p>
+                    <p class="italic font-bold text-lg mx-4 my-4 text-red-600">
+                        " Nearly 43% of respondents cite cost as the biggest obstacle to accessing mental health
+                        support. "
+                    </p>
+                    <p class="text-sm mt-3">
                         This highlights financial limitations as one of the main causes of preventing individuals from
                         seeking help. Additionally, a lack of information and knowledge about available resources also
                         further hindered access to vital support systems for individuals to get help.
@@ -183,97 +195,96 @@
 
             <!-- Dashboard -->
             <div class="ml-2 mb-2" id="demographic-dasboard">
-                <p class="text-lg font-bold">Dashboard</p>
+                <p class="text-2xl font-bold mb-4"">Dashboard</p>
             </div>
 
             <!-- GRAPHS -->
-            <div class="mb-6">
-                <div class="container m-auto grid grid-cols-3 grid-rows-2 md:grid-cols-5 lg:grid-cols-8 gap-2">
-                    <!-- Graph 1-->
-                    <div
-                        class="p-5 tile bg-white col-span-full items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100">
-                        <div class="flex flex-col">
-                            <div class="flex justify-between items-center">
-                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">Demographics</h5>
+            <div class=" mb-6">
+                    <div class="container m-auto grid grid-cols-3 grid-rows-2 md:grid-cols-5 lg:grid-cols-8 gap-2">
+                        <!-- Graph 1-->
+                        <div
+                            class="p-5 tile bg-white col-span-full items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+                            <div class="flex flex-col">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">Demographics</h5>
 
-                                <a href="./Pages/graph1.html" type="button"
-                                    class="px-3 py-1.5 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 inline-flex items-center">
-                                    More
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
-                                        viewBox="0 0 24 24" class="ml-2">
-                                        <path fill="currentColor"
-                                            d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10s10-4.48 10-10m-10 1H8v-2h4V8l4 4l-4 4z" />
-                                    </svg>
-                                </a>
+                                    <a href="./Pages/graph1.html" type="button"
+                                        class="px-3 py-1.5 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 inline-flex items-center">
+                                        More
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
+                                            viewBox="0 0 24 24" class="ml-2">
+                                            <path fill="currentColor"
+                                                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10s10-4.48 10-10m-10 1H8v-2h4V8l4 4l-4 4z" />
+                                        </svg>
+                                    </a>
+                                </div>
+
+                                <div>
+                                    <div id="sankey"></div>
+                                </div>
                             </div>
+                        </div>
 
-                            <div>
-                                <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900">Territory</h5>
-                                <tableau-viz id="tableauViz" style="height: 300px;"
-                                    src='https://public.tableau.com/views/Assignment1_17089275484770/Task2?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link'>
-                                </tableau-viz>
+                        <!-- Graph 2-->
+                        <div
+                            class="p-5 tile bg-white row-start-3 row-end-5 md:row-start-2 md:row-end-3 col-span-2 md:col-span-3 lg:col-span-3 items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+                            <div class="flex flex-col">
+                                <div class="flex justify-between items-center">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Gender & Age (only
+                                        in
+                                        tech)</h5>
+
+                                    <a href="./Pages/graph1.html" type="button"
+                                        class="px-3 py-1.5 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 inline-flex items-center">
+                                        More
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
+                                            viewBox="0 0 24 24" class="ml-2">
+                                            <path fill="currentColor"
+                                                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10s10-4.48 10-10m-10 1H8v-2h4V8l4 4l-4 4z" />
+                                        </svg>
+                                    </a>
+                                </div>
+
+                                <div>
+                                    <tableau-viz id="tableauViz" style="height: 350px;"
+                                        src='https://public.tableau.com/views/Assignment1_17089275484770/Task2?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link'>
+                                    </tableau-viz>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Graph 3-->
+                        <div
+                            class="p-5 tile bg-white row-start-3 row-end-5 md:row-start-2 md:row-end-3 col-span-2 md:col-span-3 lg:col-span-5 items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+                            <div class="flex flex-col">
+                                <div class="flex justify-between items-center">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Pollutant
+                                        Concentration
+                                        Analysis</h5>
+
+                                    <a href="./Pages/graph1.html" type="button"
+                                        class="px-3 py-1.5 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 inline-flex items-center">
+                                        More
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
+                                            viewBox="0 0 24 24" class="ml-2">
+                                            <path fill="currentColor"
+                                                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10s10-4.48 10-10m-10 1H8v-2h4V8l4 4l-4 4z" />
+                                        </svg>
+                                    </a>
+                                </div>
+
+                                <div>
+                                    <tableau-viz id="tableauViz" style="height: 350px;"
+                                        src='https://public.tableau.com/views/Assignment1_17089275484770/Task2?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link'>
+                                    </tableau-viz>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Graph 2-->
-                    <div
-                        class="p-5 tile bg-white row-start-3 row-end-5 md:row-start-2 md:row-end-3 col-span-2 md:col-span-3 lg:col-span-3 items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
-                        <div class="flex flex-col">
-                            <div class="flex justify-between items-center">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Gender & Age (only in
-                                    tech)</h5>
-
-                                <a href="./Pages/graph1.html" type="button"
-                                    class="px-3 py-1.5 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 inline-flex items-center">
-                                    More
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
-                                        viewBox="0 0 24 24" class="ml-2">
-                                        <path fill="currentColor"
-                                            d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10s10-4.48 10-10m-10 1H8v-2h4V8l4 4l-4 4z" />
-                                    </svg>
-                                </a>
-                            </div>
-
-                            <div>
-                                <tableau-viz id="tableauViz" style="height: 350px;"
-                                    src='https://public.tableau.com/views/Assignment1_17089275484770/Task2?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link'>
-                                </tableau-viz>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Graph 3-->
-                    <div
-                        class="p-5 tile bg-white row-start-3 row-end-5 md:row-start-2 md:row-end-3 col-span-2 md:col-span-3 lg:col-span-5 items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
-                        <div class="flex flex-col">
-                            <div class="flex justify-between items-center">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Pollutant Concentration
-                                    Analysis</h5>
-
-                                <a href="./Pages/graph1.html" type="button"
-                                    class="px-3 py-1.5 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 inline-flex items-center">
-                                    More
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
-                                        viewBox="0 0 24 24" class="ml-2">
-                                        <path fill="currentColor"
-                                            d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10s10-4.48 10-10m-10 1H8v-2h4V8l4 4l-4 4z" />
-                                    </svg>
-                                </a>
-                            </div>
-
-                            <div>
-                                <tableau-viz id="tableauViz" style="height: 350px;"
-                                    src='https://public.tableau.com/views/Assignment1_17089275484770/Task2?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link'>
-                                </tableau-viz>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!-- Findings -->
             <div class="my-6 ml-2" id="findings">
-                <p class="text-lg font-bold">Findings</p>
+                <p class="text-2xl font-bold mb-4">Findings</p>
                 <p class="text-sm">The tech industry is known for its rapid pace, high demands, and often intense work
                     environment. Within this context, mental health concerns have increasingly come to the forefront.
                     Despite organisations efforts to address mental health issues in the workplace, there remains a
@@ -291,7 +302,7 @@
 
             <!-- Recommendations -->
             <div class="mt-6 mb-12 ml-2" id="recommendations">
-                <p class="text-lg font-bold">Recommendations</p>
+                <p class="text-2xl font-bold mb-4">Recommendations</p>
                 <p class="text-sm">The tech industry is known for its rapid pace, high demands, and often intense work
                     environment. Within this context, mental health concerns have increasingly come to the forefront.
                     Despite organisations efforts to address mental health issues in the workplace, there remains a
@@ -351,6 +362,7 @@
 
         <script src="bundle.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+        <script src="../Graphs/Demographics/d3.demograpics.userFiilter.js"></script>
 </body>
 
 <script>

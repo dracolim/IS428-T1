@@ -22,17 +22,17 @@ function convertGender(gender) {
 
 function convertTechCompany(answer) {
     const TechCompanyMap = {
-        1: 'Yes',
-        0: 'No',
+        1: 'Works in tech company',
+        0: 'Does not work in tech company',
     };
     return TechCompanyMap[answer]; // Default case
 }
 
 ///// MAIN GRAPH BUILDER /////
 function createSankeyChart(graph) {
-    const width = 928;
-    const height = 720;
-
+    const single_color = "#eee"
+    const width = 800;
+    const height = 450;
     const sankey = d3.sankey()
         .nodeSort(null)
         .linkSort(null)
@@ -43,7 +43,7 @@ function createSankeyChart(graph) {
             [width, height - 5]
         ]);
 
-    const color = d3.scaleOrdinal(["Perished"], ["#da4f81"]).unknown("#ccc");
+    const color = d3.scaleOrdinal(["Does not work in tech company", "Works in tech company"], ["#F7C5CD", "#CAF7C5"]).unknown("#ccc")
 
     const svg = d3.select("#sankey").append("svg")
         .attr("viewBox", [0, 0, width, height])
@@ -59,35 +59,6 @@ function createSankeyChart(graph) {
         links: graph.links.map(d => Object.assign({}, d))
     });
 
-    ///// ADD INTERACTIONS /////
-    function highlightNodeLinks(node) {
-        // Highlight connected links
-        svg.selectAll(".link")
-            .transition()
-            .style("stroke-opacity", d => d.source === node || d.target === node ? 0.8 : 0.1)
-            .style("stroke", d => d.source === node || d.target === node ? "blue" : "#aaa"); // Blue for highlight
-
-        // Highlight connected nodes
-        svg.selectAll(".node")
-            .transition()
-            .style("fill-opacity", d => d === node ? 0.8 : 0.3)
-            .style("fill", d => d === node ? "blue" : "#bbb"); // Blue for highlight
-    }
-
-    function resetHighlight() {
-        // Reset links to original color and opacity
-        svg.selectAll(".link")
-            .transition()
-            .style("stroke-opacity", 0.2)
-            .style("stroke", "#aaa"); // Original color
-
-        // Reset nodes to original color and opacity
-        svg.selectAll(".node")
-            .transition()
-            .style("fill-opacity", 1)
-            .style("fill", "#bbb"); // Original color
-    }
-
     svg.append("g")
         .selectAll("rect")
         .data(nodes)
@@ -99,19 +70,34 @@ function createSankeyChart(graph) {
         .append("title")
         .text(d => `${d.name}\n${d.value.toLocaleString()}`);
 
-    svg.append("g")
+    const path = svg.append("g")
         .attr("fill", "none")
         .selectAll("g")
         .data(links)
         .join("path")
         .attr("d", d3.sankeyLinkHorizontal())
-        .attr("stroke", d => color(d.names[0]))
-        .attr("stroke-width", d => Math.max(1, d.width))
+        .attr("stroke", single_color)
+        .attr("stroke-width", d => d.width)
         .style("mix-blend-mode", "multiply")
-        .append("title")
-        .text(d => `${d.names.join(" → ")}\n${d.value.toLocaleString()}`);
+        .on("mouseover", function (event, d) {
+            if (d) {
+                path.attr("stroke", l => {
+                    if (l.names[0] === d.names[0]) {
+                        return color(d.names[0]);
+                    } else {
+                        return single_color;
+                    }
+                });
+            }
+        })
+        .on("mouseout", d => {
+            path.attr("stroke", single_color);
+        });
 
-    svg.append("g")
+    path.append("title")
+        .text(d => `${d.names.join(" -> ")}\n${d.value.toLocaleString()}`);
+    
+    const label = svg.append("g")
         .style("font", "10px sans-serif")
         .selectAll("text")
         .data(nodes)
@@ -121,10 +107,10 @@ function createSankeyChart(graph) {
         .attr("dy", "0.35em")
         .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
         .text(d => d.name)
+        .attr("fill", "#000")
         .append("tspan")
         .attr("fill-opacity", 0.7)
         .text(d => ` ${d.value.toLocaleString()}`);
-
 
     return svg.node();
 }
