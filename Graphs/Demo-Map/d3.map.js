@@ -1,69 +1,81 @@
-let urlEduData = "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json";
-let urlCountyData = "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json";
+let urlEduData = "../../cleaned_data.csv"
+let urlStateData = "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson";
 
 const w = 960;
 const h = 600;
 
-
-//API requests here, need to use Promise.all() on api requests : "we can pass in an array of promises. When all of them have resolved (or one fails), it will run our callback functions."
-Promise.all(
-        [d3.json(urlCountyData), d3.json(urlEduData)])
+Promise.all([d3.json(urlStateData), d3.csv(urlEduData)])
     .then((dataset) => ready(dataset[0], dataset[1]))
     .catch(err => console.log(err));
 
-// countyData = dataset[0], eduData = dataset[1]
-let ready = (countyData, eduData) => {
-    //all the variables I need
+let ready = (stateData, eduData) => {
     let size = 20;
-    let domain = [10, 20, 30, 40, 50, 60, 70];
-    const path = d3.geoPath(); //very very important to draw the map
-    //in countyData
-    const obj = countyData.objects; //array of all obj in countyData
-    const counties = obj.counties;
-    const bOrH = eduData.map(d => d.bachelorsOrHigher); //an array of all bachelors status
+    const projection = d3.geoMercator()
+        .scale(70)
+        .center([0, 20])
+        .translate([w / 2, h / 2]);
 
-    //gets the colors for our map 
+    const path = d3.geoPath()
+        .projection(projection);
+
+    // Count the frequency of respondents by state
+    const stateFrequency = {};
+    eduData.forEach(d => {
+        const state = d["what us state or territory do you work in?"];
+        if (state) {
+            stateFrequency[state] = (stateFrequency[state] || 0) + 1;
+        }
+    });
+
+    console.log(stateFrequency)
+
+    // Get the minimum and maximum frequency values
+    const frequencyValues = Object.values(stateFrequency);
+    const minFrequency = Math.min(...frequencyValues);
+    const maxFrequency = Math.max(...frequencyValues);
+
+    // Set the domain for the color scale
+    const domain = [0, 50, 100, 150];
+
     const colorScale = d3.scaleThreshold()
         .domain(domain)
-        .range(d3.schemeGreens[8]); //d3.schemeColor just returns an array of colors
+        .range(d3.schemeGreens[8]);
 
-    const data = topojson.feature(countyData, counties).features; // https://github.com/topojson/topojson, this is the data d3 needs to draw the map
+    const data = stateData.features;
 
-    //my choropleth container
     const svg = d3.select("#choropleth")
         .append("svg")
         .attr("width", w)
         .attr("height", h);
-    //my tooltip
+
     let tooltip = d3.select("body")
         .append("div")
         .attr("id", "tooltip");
 
-    //the actual map
-    let usCounties = svg.append("g")
+    let usStates = svg.append("g")
         .selectAll("path")
-        .attr("class", "counties")
         .data(data)
         .enter()
-        .append("path") //super important
-        .attr("class", "county")
-        .attr("d", path) // super important
-        .attr("data-fips", (d, i) => d.id)
-        .attr("data-education", (d, i) => eduData.find(item => item.fips === d.id).bachelorsOrHigher) //need find() to match countyData with eduData !
-        .attr("fill", (d, i) => colorScale(eduData.find(item => item.fips === d.id).bachelorsOrHigher) || 0)
+        .append("path")
+        .attr("class", "state")
+        .attr("d", path)
+        .attr("data-name", d => d.properties.name)
+        .attr("data-frequency", d => stateFrequency[d.properties.name] || 0)
+        .attr("fill", d => colorScale(stateFrequency[d.properties.name] || 0))
+        .attr("stroke", "black") // Add state borders
+        .attr("stroke-width", 0.5) // Set border width
         .on("mouseover", (event, d) => {
-            const education = eduData.find(item => item.fips === d.id);
+            const frequency = stateFrequency[d.properties.name] || 0;
             tooltip.transition()
                 .style("visibility", "visible")
                 .style("cursor", "default")
                 .style("left", event.pageX + 0 + "px")
                 .style("top", event.pageY - 150 + "px")
-                .attr("data-education", education.bachelorsOrHigher)
-                .text(() => "State: " + education.state + ", Area: " + education.area_name + ", " + education.bachelorsOrHigher + "%")
+                .attr("data-frequency", frequency)
+                .text(() => "State: " + d.properties.name + ", Frequency: " + frequency)
         })
         .on("mouseout", () => tooltip.style("visibility", "hidden"));
 
-    //legend part
     let legendBox = svg.append("g")
         .attr("id", "legend");
 
@@ -76,20 +88,19 @@ let ready = (countyData, eduData) => {
         .enter()
         .append("rect")
         .attr("x", w - 20)
-        .attr("y", (d, i) => 310 + i * (size)) // 310 is where the first rect appears. size is the distance between dots
+        .attr("y", (d, i) => 310 + i * (size))
         .attr("width", size)
         .attr("height", size)
         .attr("fill", d => legendScale(d));
 
-    //legend axis in %
-    const legendDomain = [2.6, 75.1];
+    const legendDomain = [0, 50, 100,150];
     const yScale = d3.scaleLinear()
         .domain(legendDomain)
-        .range([310, 449]);
+        .range([310, 330]);
 
     const yAxis = d3.axisLeft(yScale)
         .tickValues(legendDomain)
-        .tickFormat(d => d + " %")
+        .tickFormat(d => d)
         .tickSize(3);
 
     svg.append("g")
