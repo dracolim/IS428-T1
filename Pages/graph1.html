@@ -69,9 +69,45 @@
     <!--BODY -->
     <div class="bg-gray-50 mb-12">
 
-        <nav class="bg-red-600 text-white text-md fixedw-full start-0">
+        <nav class="bg-red-600 fixedw-full start-0">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-3">
-                Demographics Overview
+
+                <div class="items-end flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                    <button data-collapse-toggle="navbar-sticky" type="button"
+                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-200 focus:ou tline-none focus:ring-2 focus:ring-gray-200"
+                        aria-controls="navbar-sticky" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 17 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 1h15M1 7h15M1 13h15" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                    <ul
+                        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-red-600">
+                        <li>
+                            <a href="#overview"
+                                class="block py-2 px-3 text-white bg-red-600 rounded md:bg-transparent md:text-white md:p-0"
+                                aria-current="page">Overview</a>
+                        </li>
+                        <li>
+                            <a href="#territory"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">Territory</a>
+                        </li>
+                        <li>
+                            <a href="#gender"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">
+                                Gender</a>
+                        </li>
+                        <li>
+                            <a href="#age"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">Age</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
@@ -87,13 +123,12 @@
 
         <div class="container m-auto px-32">
 
-            <!-- Graph 1-->
-            <div class="grid gap-4">
+            <!-- OVERVIEW -->
+            <div class="grid gap-4" id ="overview">
                 <div class="p-5 col-span-full items-center ">
 
                     <div class="flex justify-between items-center">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">Demograpics represented on
-                            parallel set</h5>
+                        <h5 class="mb-3 text-xl font-bold tracking-tight text-gray-900">Demographics Overview</h5>
                     </div>
 
                     <div class="flex items-center justify-center ">
@@ -102,11 +137,11 @@
                 </div>
             </div>
 
-            <!-- ABOUT THE GRAPH -->
+            <!-- MORE -->
             <div class="mt-3">
                 <div class="mt-5">
                     <p class="font-bold text-lg">
-                        Demographics Overview
+                        Overview
                     </p>
                     <p class="text-sm">
                         From the parallel sets visualization, it shows the dataset pertains to individuals segmented by
@@ -118,7 +153,8 @@
                             within
                             the tech sector engage with mental health services and their specific needs.
                         </p>
-                        <p class="mt-6">
+                        <!-- TERRITORY -->
+                        <p class="mt-6" id="territory">
                             <p class="font-bold text-md">
                                 Territory
                             </p>
@@ -127,36 +163,55 @@
                             </div>
                             <p class="text-sm">
                                 The majority of the individuals work in tech companies, particularly
-                                in the United States, which has the highest representation. The majority from the United States of America are also currently working in medium or large companies.
+                                in the United States, which has the highest representation. The majority from the United
+                                States of America are also currently working in medium or large companies.
                             </p>
                             <p class="text-sm mt-3">
-                                Since the majority are from the United States of America, we zoomed in further to identify cities that had the most respondents. California and Illinois had the highest number of respondents with 137 from California and 146 from Illinois.
+                                Since the majority are from the United States of America, we zoomed in further to
+                                identify cities that had the most respondents. California and Illinois had the highest
+                                number of respondents with 137 from California and 146 from Illinois.
                             </p>
                         </p>
-                        <p class="mt-6">
+
+                        <!-- GENDER -->
+                        <p class="mt-6" id="gender">
+                            <p class="font-bold text-md">
+                                Gender
+                            </p>
+                            <div class="">
+                                <div class="flex items-center justify-center">
+                                    <div id="gender_bar"></div>
+                                </div>
+                            </div>
+                            <p class="text-sm">
+                                The graphs above revealed a pronounced gender disparity among the tech industry
+                                professionals. The bar chart highlights that in the United States, the number of male
+                                respondents vastly outnumber females and the “others” respondents. This is mirrored in
+                                the pie chart, where males constitute 64% of the total survey population, female 31.7%
+                                and others 4.3%. This gender imbalance highlights the need for continued efforts towards
+                                achieving greater diversity and inclusion within the industry.
+                            </p>
+                        </p>
+
+                        <p class="mt-6" id="age">
                             <p class="font-bold text-md">
                                 Age
                             </p>
 
-                            <p class="text-sm">
-                                There's also a diverse age
-                                distribution, with a concentration in the 31-50 age range, indicating that mid-career
-                                professionals are the most represented in this dataset.
-                            </p>
-                        </p>
-                        <p class="mt-6">
-                            <p class="font-bold text-md">
-                                Gender
-                            </p>
+                            <div class="">
+                                <div class="flex items-center justify-center">
+                                    <div id="age_bar"></div>
+                                </div>
+                            </div>
 
                             <p class="text-sm">
-                                The gender distribution leans heavily
-                                towards males, followed by females and a smaller proportion of non-binary individuals.
-                                This
-                                could imply a gender disparity within the mental health conversation in the tech
-                                industry,
-                                with
-                                potential implications for targeted wellness programs or resource allocation.
+                                The age demographics of the respondents are indicative of a workforce that skews
+                                younger. The age distribution is right skewed with the bulk of the respondents falling
+                                within the 30-40 age range. This central concentration suggests that mid-career
+                                professionals are the most presented demographic in our data. The representation is
+                                smaller for both below 30 and above 40, which may point to a variety of factors
+                                including industry hiring trends, career transitions, and the appeal of the tech
+                                industry to the different age cohorts.
                             </p>
                         </p>
                     </p>
@@ -201,8 +256,12 @@
         </div>
     </footer>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="../Graphs/Demographics/d3.demograpics.userFiilter.js"></script>
     <script src="../Graphs/Demo-Map/d3.map3.js"></script>
+    <script src="../Graphs/Gender/d3.gender.js"></script>
+    <script src="../Graphs/Age/d3.age.js"></script>
 </body>
 
 <script>
