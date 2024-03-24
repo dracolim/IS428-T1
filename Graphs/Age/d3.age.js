@@ -1,11 +1,11 @@
 // set the dimensions and margin_ages of the graph
 const margin_age = {
         top: 30,
-        right: 30,
+        right: 120,
         bottom: 60,
         left: 60
     },
-    width_age = 500 - margin_age.left - margin_age.right,
+    width_age = 700 - margin_age.left - margin_age.right,
     height_age = 450 - margin_age.top - margin_age.bottom;
 
 // append the svg3 object to the body of the page
@@ -23,10 +23,8 @@ let tooltip_age = d3.select("#age_bar")
 
 // Parse the Data
 d3.csv("../../Data/age_gender_tech.csv").then(function (data) {
-    // List of subgroups = header of the csv files = soil condition here
     const subgroups = data.columns.slice(1);
 
-    // List of groups = species here = value of the first column called group -> I show them on the X axis
     const groups = data.map(d => d.Age);
 
     // Add X axis
@@ -65,16 +63,15 @@ d3.csv("../../Data/age_gender_tech.csv").then(function (data) {
         .attr("x", -margin_age.top - 50)
         .text("Number of Respondents");
 
-    // Another scale for subgroup position?
     const xSubgroup = d3.scaleBand()
         .domain(subgroups)
         .range([0, x.bandwidth()])
         .padding([0.05]);
 
-    // color palette = one color per subgroup
+    // one color per subgroup
     const color = d3.scaleOrdinal()
         .domain(subgroups)
-        .range(['#e41a1c', '#377eb8', '#4daf4a']);
+        .range(['#EC4141', '#41A3EC', '#65EC86']);
 
     // Show the bars
     svg3.append("g")
@@ -106,4 +103,39 @@ d3.csv("../../Data/age_gender_tech.csv").then(function (data) {
                 .style("top", (event.pageY - 28) + "px");
         })
         .on("mouseout", () => tooltip_age.style("visibility", "hidden"));
+
+    // Add legend
+    const legendWidth = 120;
+    const legendHeight = 70;
+    const legendRectSize = 12;
+    const legendSpacing = 5;
+
+    const legend = svg3.append("g")
+        .attr("transform", `translate(${width_age-20}, ${(height_age - legendHeight) / 2})`);
+
+    legend.append("rect")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("width", legendWidth)
+        .attr("height", legendHeight)
+        .attr("fill", "#ffffff")
+        .attr("stroke", "#000000")
+        .attr("stroke-width", 1);
+
+    subgroups.forEach((subgroup, i) => {
+        const yOffset = i * (legendRectSize + legendSpacing) + 10;
+
+        legend.append("rect")
+            .attr("x", 10)
+            .attr("y", yOffset)
+            .attr("width", legendRectSize)
+            .attr("height", legendRectSize)
+            .attr("fill", color(subgroup));
+
+        legend.append("text")
+            .attr("x", 10 + legendRectSize + 5)
+            .attr("y", yOffset + legendRectSize / 2)
+            .attr("dominant-baseline", "middle")
+            .text(subgroup);
+    });
 });
