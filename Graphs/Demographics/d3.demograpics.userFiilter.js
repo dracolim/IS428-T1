@@ -199,7 +199,7 @@ function prepareGraph(data) {
     };
 }
 
-d3.csv("../../cleaned_data.csv").then(data => {
+d3.csv("../../Data/cleaned_data.csv").then(data => {
     data.forEach(d => d.value = +d.value); // Convert string to number if necessary
 
     // Process the data for the Sankey diagram

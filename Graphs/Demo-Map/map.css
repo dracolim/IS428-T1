@@ -1,52 +1,36 @@
-#title {
+.legend {
+	position:absolute;
+	left:20px;
+	top:30px;
+}
+
+.axis text {
+	font: 10px sans-serif;
+}
+
+.axis line, .axis path {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+
+#tooltip {
+  position: absolute;
+  visibility: hidden;
   text-align: center;
-  font-size: 2.5em;
-  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #000;
+  background-color: #F2DED7;
+  padding: 20px;
+  width: 100px;
+  border-radius: 10px;
+  font-size: 12px;
 }
 
-#description {
-  text-align: center;
-  font-size: 1.5em;
-  padding: 20px 0 0 0;
+#choropleth {
+  width: 100%; /* Set to the width of its container */
+  display: flex;
+  justify-content: center;
 }
-
-#source {
-text-align: right;
-}
-
-.color-01 {
-fill: #e5f5e0;
-}
-
-.color-02 {
-fill: #c7e9c0;
-}
-
-.color-03 {
-fill: #a1d99b;
-}
-
-.color-04 {
-fill: #74c476;
-}
-
-.color-05 {
-fill: #41ab5d;
-}
-
-.color-06 {
-fill: #238b45;
-}
-
-.color-07 {
-fill: #006d2c;
-}
-
-.color-error {
-fill: #000000;
-}
-
-
-
-
-
