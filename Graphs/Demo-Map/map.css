@@ -14,21 +14,6 @@
 	shape-rendering: crispEdges;
 }
 
-
-#tooltip {
-  position: absolute;
-  visibility: hidden;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  border: solid 1px #000;
-  background-color: #F2DED7;
-  padding: 20px;
-  width: 100px;
-  border-radius: 10px;
-  font-size: 12px;
-}
-
 #choropleth {
   width: 100%; /* Set to the width of its container */
   display: flex;
