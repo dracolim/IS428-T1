@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mental Health</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../Graphs/Demo-Map/map.css">
+    <link rel="stylesheet" href="../CSS/main.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Flowbite -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- Embedding API -->
+    <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- D3.js -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!--LEGEND for map-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+
+    <!-- TAB ICON -->
+    <link rel="icon" href="../Images/OSMI-Logo-Medium.png">
+</head>
+
+<body class="bg-gray-50" style="font-family:caudex;">
+    <!-- Header -->
+    <div class="flex justify-center items-center">
+        <div class="bg-white py-6">
+            <div class="flex mx-12">
+                <div class="flex-none ml-12">
+                    <img src="../Images/OSMI-Logo-Medium.png" alt="OSMI Logo" class="size-32">
+                </div>
+
+                <div class="text-center">
+                    <p class="text-md text-red-600 font-bold text-xl mb-2">
+                        OSMI MENTAL HEALTH IN TECH
+                    </p>
+                    <p class="text-md text-gray-700 text-md mb-2">
+                        Changing how we talk about mental health in the tech industry
+                    </p>
+                    <p class="text-md text-red-600 font-bold text-sm mb-2">
+                        About the tech survey
+                    </p>
+                    <p class="text-md text-gray-700 text-xs md:mx-5 text-wrap">
+                        Currently over 1400 responses, the ongoing 2024 survey aims to measure attitudes towards mental
+                        health in the tech workplace, and examine the frequency of mental health disorders among tech
+                        workers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--BODY -->
+    <div class="bg-gray-50 mb-12">
+
+        <nav class="bg-red-600 fixedw-full start-0">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-3">
+
+                <div class="items-end flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                    <button data-collapse-toggle="navbar-sticky" type="button"
+                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-200 focus:ou tline-none focus:ring-2 focus:ring-gray-200"
+                        aria-controls="navbar-sticky" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 17 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 1h15M1 7h15M1 13h15" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                    <ul
+                        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-red-600">
+                        <li>
+                            <a href="#overview"
+                                class="block py-2 px-3 text-white bg-red-600 rounded md:bg-transparent md:text-white md:p-0"
+                                aria-current="page">Overview</a>
+                        </li>
+                        <li>
+                            <a href="#territory"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">Territory</a>
+                        </li>
+                        <li>
+                            <a href="#gender"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">
+                                Gender</a>
+                        </li>
+                        <li>
+                            <a href="#age"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">Age</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <a type="button" href="../Main.html"
+            class="my-5 mx-5 px-3 py-1.5 text-sm font-medium text-red-600 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24" class="mr-2">
+                <path fill="currentColor"
+                    d="M2 12c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 2 12 2S2 6.48 2 12m10-1h4v2h-4v3l-4-4l4-4z" />
+            </svg>
+            Back to Dashboard
+        </a>
+
+        <div class="container m-auto px-32">
+
+            <!-- OVERVIEW -->
+            <div class="grid gap-4" id="overview">
+                <div class="p-5 col-span-full items-center bg-white border border-gray-200 rounded-lg shadow">
+
+                    <div class="flex justify-between items-center">
+                        <h5 class="mb-3 text-2xl font-bold tracking-tight text-gray-900">Demographics Overview</h5>
+                    </div>
+
+                    <div class="flex items-center justify-center ">
+                        <div id="sankey"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MORE -->
+            <div class="mt-3">
+                <div class="mt-5">
+                    <p class="font-bold text-2xl mb-2 mt-8">
+                        Overview
+                    </p>
+                    <p class="text-lg">
+                        From the parallel sets visualization, it shows the dataset pertains to individuals segmented by
+                        their employment status in tech companies, geographical
+                        location, age, and gender.
+                        <p class="text-lg mt-3 mb-8">
+                            The overview
+                            presents an opportunity to delve deeper into the nuances of how different demographics
+                            within
+                            the tech sector engage with mental health services and their specific needs.
+                        </p>
+                        <!-- TERRITORY -->
+                        <p class="mt-6" id="territory">
+                            <div
+                                class="p-5 col-span-full items-center bg-white border border-gray-200 rounded-lg shadow mb-4">
+                                <p class="font-bold text-2xl">
+                                    Territory
+                                </p>
+                                <div class="mb-4">
+                                    <div id="choropleth"></div>
+                                </div>
+                            </div>
+
+                            <p class="text-lg mt-8">
+                                The majority of the individuals work in tech companies, particularly
+                                in the United States, which has the highest representation. The majority from the United
+                                States of America are also currently working in medium or large companies.
+                            </p>
+                            <p class="text-lg mt-3">
+                                Since the majority are from the United States of America, we zoomed in further to
+                                identify cities that had the most respondents.
+                                <p class="italic font-bold text-lg mx-4 mt-4 mb-8 text-red-600">
+                                    California and Illinois had the highest number of respondents with 147 from
+                                    California and 136 from Illinois.
+                                </p>
+                            </p>
+                        </p>
+
+                        <!-- GENDER -->
+                        <p class="mt-6" id="gender">
+                            <div
+                                class="p-5 col-span-full items-center bg-white border border-gray-200 rounded-lg shadow mb-4">
+                                <p class="font-bold text-2xl">
+                                    Gender
+                                </p>
+                                <div class="">
+                                    <div class="flex items-center justify-center">
+                                        <div id="gender_bar"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="text-lg mt-8">
+                                The graphs above revealed a pronounced gender disparity among the tech industry
+                                professionals.
+                                <p class="italic font-bold text-lg mx-4 my-4 text-red-600">
+                                    The bar chart highlights that the number of male
+                                    respondents vastly outnumber females and the "Non-Binary" respondents.
+                                </p>
+                                <p class="text-lg mb-8">
+                                    Males constitute 65.2% of the total survey population, Female
+                                    31.4%
+                                    and Non-Binary 3.4%. This gender imbalance highlights the need for continued efforts
+                                    towards
+                                    achieving greater diversity and inclusion within the industry.
+                                </p>
+                            </p>
+                        </p>
+
+                        <p class="mt-6" id="age">
+                            <div
+                                class="p-5 col-span-full items-center bg-white border border-gray-200 rounded-lg shadow mb-4">
+                                <p class="font-bold text-2xl">
+                                    Age
+                                </p>
+
+                                <div class="">
+                                    <div class="flex items-center justify-center">
+                                        <div id="age_bar"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="text-lg mt-8">
+                                The age demographics of the respondents are indicative of a workforce that skews
+                                younger.
+                                <p class="italic font-bold text-lg mx-4 my-4 text-red-600">
+                                    The age distribution is right skewed with the bulk of the respondents falling
+                                    within the 30-40 age range.
+                                </p>
+                                <p class="text-lg mb-8">
+                                    This central concentration suggests that mid-career
+                                    professionals are the most presented demographic in our data. The representation is
+                                    smaller for both below 30 and above 40, which may point to a variety of factors
+                                    including industry hiring trends, career transitions, and the appeal of the tech
+                                    industry to the different age cohorts.
+                                </p>
+
+                            </p>
+                        </p>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Button to go to TOP -->
+    <button type="button" data-twe-ripple-init data-twe-ripple-color="light"
+        class="!fixed bottom-5 end-5 hidden rounded-full bg-black p-3 text-xs font-medium uppercase leading-tight text-white shadow-lg transition duration-150 ease-in-out hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg"
+        id="btn-back-to-top">
+        <span class="[&>svg]:w-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+            </svg>
+        </span>
+    </button>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-red-600">
+        <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <span class="flex text-sm text-white sm:text-center">
+                    <span class="font-bold mr-2">IS428</span> Visual Analytics for Business Intelligence
+
+                    <a href="https://github.com/dracolim/IS428-T1.git"
+                        class="text-white hover:text-gray-900 dark:hover:text-white ms-5">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span class="sr-only">GitHub account</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="../Graphs/Demographics/d3.demograpics.userFiilter.js"></script>
+    <script src="../Graphs/Demo-Map/d3.map3.js"></script>
+    <script src="../Graphs/Gender/d3.gender.js"></script>
+    <script src="../Graphs/Age/d3.age.js"></script>
+</body>
+
+<script>
+    const mybutton = document.getElementById("btn-back-to-top");
+
+    const scrollFunction = () => {
+        if (
+            document.body.scrollTop > 20 ||
+            document.documentElement.scrollTop > 20
+        ) {
+            mybutton.classList.remove("hidden");
+        } else {
+            mybutton.classList.add("hidden");
+        }
+    };
+    const backToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+
+    mybutton.addEventListener("click", backToTop);
+
+    window.addEventListener("scroll", scrollFunction);
+</script>
+
+</html>

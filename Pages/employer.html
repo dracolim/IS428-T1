@@ -88,22 +88,16 @@
                     <ul
                         class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-red-600">
                         <li>
-                            <a href="#overview"
+                            <a href="#discussion"
                                 class="block py-2 px-3 text-white bg-red-600 rounded md:bg-transparent md:text-white md:p-0"
-                                aria-current="page">Overview</a>
+                                aria-current="page">Discussions with Current
+                                vs Future Consideration</a>
                         </li>
                         <li>
-                            <a href="#territory"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">Territory</a>
-                        </li>
-                        <li>
-                            <a href="#gender"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">
-                                Gender</a>
-                        </li>
-                        <li>
-                            <a href="#age"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">Age</a>
+                            <a href="#willing"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">Willingness
+                                to discuss
+                                MH based on importance placed on it by employer</a>
                         </li>
                     </ul>
                 </div>
@@ -122,118 +116,106 @@
 
         <div class="container m-auto px-32">
 
-            <!-- OVERVIEW -->
-            <div class="grid gap-4" id="overview">
-                <div class="p-5 col-span-full items-center ">
+            <!-- Graph  1-->
+            <div class="grid gap-4" id="discussion">
+                <div class="container m-auto grid grid-cols-3 grid-rows-1 md:grid-cols-5 lg:grid-cols-8 gap-2 mb-2">
+                    <div
+                        class="mt-4 p-5 tile bg-white col-span-full items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+                        <div class="flex flex-col">
+                            <div class="flex justify-between items-center mb-2">
+                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">Discussions with Current
+                                    vs Future Consideration</h5>
+                            </div>
 
-                    <div class="flex justify-between items-center">
-                        <h5 class="mb-3 text-xl font-bold tracking-tight text-gray-900">Demographics Overview</h5>
-                    </div>
-
-                    <div class="flex items-center justify-center ">
-                        <div id="sankey"></div>
+                            <div>
+                                <tableau-viz id="tableauViz" style="height: 380px;"
+                                    src='https://public.tableau.com/views/discussion_17117873187840/DicusswithCurrentv_s_futureconsideration?:language=en-GB&:sid=&:display_count=n&:origin=viz_share_link'>
+                                </tableau-viz>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- MORE -->
-            <div class="mt-3">
-                <div class="mt-5">
-                    <p class="font-bold text-lg">
-                        Overview
+                <!-- MORE -->
+                <div class="">
+                    <p class="font-bold text-2xl mb-2">
+                        Findings
                     </p>
-                    <p class="text-md">
-                        From the parallel sets visualization, it shows the dataset pertains to individuals segmented by
-                        their employment status in tech companies, geographical
-                        location, age, and gender.
-                        <p class="text-md mt-3">
-                            The overview
-                            presents an opportunity to delve deeper into the nuances of how different demographics
-                            within
-                            the tech sector engage with mental health services and their specific needs.
-                        </p>
-                        <!-- TERRITORY -->
-                        <p class="mt-6" id="territory">
-                            <p class="font-bold text-lg">
-                                Territory
-                            </p>
-                            <div class="mb-4">
-                                <div id="choropleth"></div>
-                            </div>
-                            <p class="text-md">
-                                The majority of the individuals work in tech companies, particularly
-                                in the United States, which has the highest representation. The majority from the United
-                                States of America are also currently working in medium or large companies.
-                            </p>
-                            <p class="text-md mt-3">
-                                Since the majority are from the United States of America, we zoomed in further to
-                                identify cities that had the most respondents. 
-                                <p class="italic font-bold text-lg mx-4 my-4 text-red-600">
-                                    California and Illinois had the highest number of respondents with 147 from California and 136 from Illinois.
-                                </p>
-                                
-                            </p>
+                    <p class="text-lg">
+                        From this we can see that regardless if employees discussed mental health issues with their
+                        previous employers, the majority are still unwilling to discuss it with a potential employer.
+                        <p class="text-lg mt-3">
+                            There could be a few reasons for this:
                         </p>
 
-                        <!-- GENDER -->
-                        <p class="mt-6" id="gender">
-                            <p class="font-bold text-lg">
-                                Gender
-                            </p>
-                            <div class="">
-                                <div class="flex items-center justify-center">
-                                    <div id="gender_bar"></div>
-                                </div>
-                            </div>
-                            <p class="text-md">
-                                The graphs above revealed a pronounced gender disparity among the tech industry
-                                professionals.
-                                <p class="italic font-bold text-lg mx-4 my-4 text-red-600">
-                                    The bar chart highlights that the number of male
-                                    respondents vastly outnumber females and the "Non-Binary" respondents.
-                                </p>
-                                <p>
-                                    Males constitute 65.2% of the total survey population, Female
-                                    31.4%
-                                    and Non-Binary 3.4%. This gender imbalance highlights the need for continued efforts
-                                    towards
-                                    achieving greater diversity and inclusion within the industry.
-                                </p>
-                            </p>
+                        <p class="text-lg font-bold mt-3 italic">1. Stigma and Fear of Discrimination</p>
+                        <img src="../Images/Personality disorder-cuate.png" class=" h-auto max-w-xs mx-auto">
+                        <p class="text-lg">One reason employees hesitate to discuss mental health with potential
+                            employers is the stigma and stereotypes surrounding mental illness. Despite progress in
+                            raising awareness, there remains a fear of discrimination, such as being perceived as weak
+                            or unreliable, which can hinder career advancement or opportunities for professional
+                            development.
                         </p>
 
-                        <p class="mt-6" id="age">
-                            <p class="font-bold text-lg">
-                                Age
-                            </p>
+                        <p class="text-lg font-bold mb-2 mt-3 italic">2. Lack of Organisational Support</p>
+                        <img src="../Images/Team goals-cuate.png" class=" h-auto max-w-xs mx-auto">
+                        <p class="text-lg">In some offices, including / especially those in the tech industry, mental
+                            health discussions may not be prioritised or encouraged. Employees will then feel that their
+                            organisation doesn't care / lacks organisational support for addressing mental health
+                            issues. This would then lead them to remain silent as they fear their real needs would be
+                            addressed in a token manner or not at all.
+                        </p>
 
-                            <div class="">
-                                <div class="flex items-center justify-center">
-                                    <div id="age_bar"></div>
-                                </div>
-                            </div>
-
-                            <p class="text-md">
-                                The age demographics of the respondents are indicative of a workforce that skews
-                                younger.
-                                <p class="italic font-bold text-lg mx-4 my-4 text-red-600">
-                                    The age distribution is right skewed with the bulk of the respondents falling
-                                    within the 30-40 age range.
-                                </p>
-                                <p>
-                                    This central concentration suggests that mid-career
-                                    professionals are the most presented demographic in our data. The representation is
-                                    smaller for both below 30 and above 40, which may point to a variety of factors
-                                    including industry hiring trends, career transitions, and the appeal of the tech
-                                    industry to the different age cohorts.
-                                </p>
-
-                            </p>
+                        <p class="text-lg font-bold mb-2 mt-3 italic">3. Cultural Norms and Expectations</p>
+                        <img src="../Images/Bullying-cuate.png" class=" h-auto max-w-xs mx-auto">
+                        <p class="text-lg">Tech companies often foster a culture of high performance, intense
+                            competition, and long hours, which would only exacerbate stress and contribute to mental
+                            health challenges. Thus, employees may feel pressure to prioritise work over their mental
+                            well being and may be unwilling to disclose mental health issues for fear of being perceived
+                            as a weaker member of the team.
                         </p>
                     </p>
                 </div>
 
+
+                <!-- Graph  2-->
+                <div id="willing"
+                    class="container m-auto grid grid-cols-3 grid-rows-1 md:grid-cols-5 lg:grid-cols-8 gap-2 mb-4">
+                    <div
+                        class="mt-4 p-5 tile bg-white col-span-full items-center border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+                        <div class="flex flex-col">
+                            <div class="flex justify-between items-center mb-2">
+                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">Is there importance
+                                    placed on mental health by employers? Does this affect whether employees are willing
+                                    to discuss about mental health?</h5>
+                            </div>
+
+                            <div>
+                                <tableau-viz id="tableauViz" style="height: 380px;"
+                                    src='https://public.tableau.com/views/Mental_Health_Dashboard_17113583451340/Sheet23?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link'>
+                                </tableau-viz>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-2">
+                    <p class="font-bold text-2xl mb-2">
+                        Findings
+                    </p>
+                    <p class="text-lg">Employees seem to be more willing to talk about mental health as importance
+                        rating increases (based on % number). From ratings of 7-10, there is consistently more than 40%
+                        willing to talk about mental health.
+
+                    </p>
+                    <p class="text-lg mt-3">Only less than 8% of respondents rated 9-10, less than 30% of respondents
+                        rated 7-8. The rest rated 6 and below This shows that minimal number of companies do not really
+                        place importance on mental health.
+
+                    </p>
+                </div>
             </div>
+
         </div>
     </div>
 
@@ -274,10 +256,7 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script src="../Graphs/Demographics/d3.demograpics.userFiilter.js"></script>
-    <script src="../Graphs/Demo-Map/d3.map3.js"></script>
-    <script src="../Graphs/Gender/d3.gender.js"></script>
-    <script src="../Graphs/Age/d3.age.js"></script>
+    <script src="./familyHistory.html"></script>
 </body>
 
 <script>
