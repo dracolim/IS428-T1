@@ -4,7 +4,6 @@
 <head>
     <title>Mental Health</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="../Graphs/Demo-Map/map.css">
     <link rel="stylesheet" href="../CSS/main.css">
 
     <!-- Tailwind CSS -->
@@ -25,12 +24,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- D3.js -->
-    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-    <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-
-    <!--LEGEND for map-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
 
     <!-- TAB ICON -->
     <link rel="icon" href="../Images/OSMI-Logo-Medium.png">
@@ -127,11 +121,13 @@
                 <div class="p-5 col-span-full items-center ">
 
                     <div class="flex justify-between items-center">
-                        <h5 class="mb-3 text-xl font-bold tracking-tight text-gray-900">Family History vs Willingness to share with peers</h5>
+                        <h5 class="mb-3 text-xl font-bold tracking-tight text-gray-900">Demographics Overview</h5>
                     </div>
 
-                    <div class="flex items-center justify-center ">
-                        <div id="sankey"></div>
+                    <div class=" ">
+                        <div id="sunburst_view" align="center" class="p-4"><iframe allowtransparency="true" frameborder="0"
+                            overflow="hidden" scrolling="no" src="../Graphs/Sun-Burst_View/index_sunburst.html" height="100%"
+                            width="100%"></iframe></div>
                     </div>
                 </div>
             </div>
@@ -167,13 +163,15 @@
                             </p>
                             <p class="text-md mt-3">
                                 Since the majority are from the United States of America, we zoomed in further to
-                                identify cities that had the most respondents. 
+                                identify cities that had the most respondents.
                                 <p class="italic font-bold text-lg mx-4 my-4 text-red-600">
-                                    California and Illinois had the highest number of respondents with 147 from California and 136 from Illinois.
+                                    California and Illinois had the highest number of respondents with 147 from
+                                    California and 136 from Illinois.
                                 </p>
-                                
+
                             </p>
                         </p>
+
                     </p>
                 </div>
 
@@ -218,7 +216,6 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script src = "./familyHistory.html"></script>
 </body>
 
 <script>

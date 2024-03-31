@@ -9,9 +9,9 @@ function initchart() {
     chart.refreshChart(data);
 }
 
-function mouseover(d) {
-    chart.refreshChart(d);
-    var c = getcrumbpath(d);
+function mouseover(event, data) {
+    // Update breadcrumb trail and opacity as before
+    var c = getcrumbpath(data);
     i(c);
     d3.selectAll(".skills-sunburst path")
         .style("opacity", 0.3);
@@ -20,7 +20,16 @@ function mouseover(d) {
             return c.indexOf(a) >= 0;
         })
         .style("opacity", 1);
+
+    // Check if _percentage data is present, and if so, update the line chart
+    console.log(data.data);
+    if (data.data && Array.isArray(data.data._percentage)) {
+        chart.refreshChart(data.data);
+    } else {
+        console.log("Percentage data not found for this node:", data);
+    }
 }
+
 
 function mouseleave() {
     d3.selectAll("path")
@@ -65,6 +74,7 @@ function h(a, d3) {
 
 function i(a) {
     var color = a[a.length - 1]._color;
+    var len = a.length;
     var c = d3.select("#family .trail")
         .selectAll("g")
         .remove();
@@ -98,6 +108,36 @@ function i(a) {
     d3.select(".trail").style("visibility", "");
 }
 
+function t(a, b) {
+    var length = Math.max(a.length, b.length);
+    var result = [];
+
+    for (var i = 0; i < length; i++) {
+        var valueA = i < a.length ? a[i] : 0;
+        var valueB = i < b.length ? b[i] : 0;
+        var combinedValue = valueA + valueB;
+        result.push(combinedValue);
+    }
+
+    return result;
+}
+
+function u(data) {
+    if (Array.isArray(data)) {
+        return data;
+    }
+
+    var result = new Array(6).fill(0); // Assuming there are 6 years of data
+
+    for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+            result = t(result, u(data[key]));
+        }
+    }
+
+    return result;
+}
+
 function getcolor(color) {
     return 0.299 * color.r + 0.587 * color.g + 0.114 * color.b;
 }
@@ -119,19 +159,25 @@ function k(a) {
 var l;
 var chart = (function (d3) {
     function processdata(data) {
+        console.log(data);
         var b = [];
-        var c = 0;
-        data._percentage.forEach(function (a) {
-            if (c <= i.length) {
-                b.push({
-                    p: a,
-                    date: i[c]
-                });
-                c++;
-            }
-        });
+        if (data && Array.isArray(data._percentage)) {
+            data._percentage.forEach(function (percentage, index) {
+                // Make sure we do not exceed the `i` array bounds.
+                if (index < i.length) {
+                    b.push({
+                        p: percentage,
+                        date: i[index]
+                    });
+                }
+            });
+        } else {
+            // Log an error if data is not structured as expected.
+            console.error('Data is not structured as expected:', data);
+        }
         return b;
     }
+
 
     function c(b, c) {
         j.domain(d3.extent(b, function (d) {
@@ -167,9 +213,10 @@ var chart = (function (d3) {
     }
 
     function refreshChart(data) {
+        console.log('HELLO');
         var e = processdata(data);
         var f = d3.select("#skills-chart-line");
-        if (f.empty()) {
+        if (f.node() === null) {
             c(e, data);
         } else {
             f.datum(e)
@@ -189,18 +236,18 @@ var chart = (function (d3) {
     };
     var g = 500 - rect.left - rect.right;
     var h = 400 - rect.top - rect.bottom;
-    var i = [2014, 2016, 2019];
+    var i = [2017, 2018, 2019, 2020, 2021, 2022];
     var j = d3.scaleLinear().range([0, g]);
     var k = d3.scaleLinear().range([h, 0]);
     var bottomtick = d3.axisBottom(j)
-        .tickValues([2014, 2016, 2019])
+        .tickValues([2017, 2018, 2019, 2020, 2021, 2022])
         .tickFormat(d3.format(".0f"))
         .tickPadding(10)
         .tickSize(0);
     var lefttick = d3.axisLeft(k)
         .tickSize(0)
         .tickPadding(10)
-        .tickValues([20, 40, 60, 80, 100]);
+        .tickValues([20, 40, 60, 80, 100, 120, 140, 160, 180, 200]);
     var n = d3.line()
         .curve(d3.curveBasis)
         .x(function (d) {
@@ -219,9 +266,6 @@ var chart = (function (d3) {
     chart.refreshChart = refreshChart;
     return chart;
 })(d3);
-
-
-
 
 var width_family = 560;
 var height_family = 560;
@@ -246,26 +290,32 @@ sunburst.append("circle")
     .style("opacity", 0);
 
 var t = function (a, b) {
-    var c = [],
-        d = a.length;
-    if (a.length !== b.length) c = a.length > b.length ? a : b;
-    else
-        for (var e = 0; d > e; e++) {
+    var c = [];
+    var d = a.length;
+    if (a.length !== b.length) {
+        c = a.length > b.length ? a : b;
+    } else {
+        for (var e = 0; e < d; e++) {
             var f = Math.max(a[e], b[e]) - Math.abs(a[e] - b[e]) / 8;
-            c.push(f)
+            c.push(f);
         }
-    return c
+    }
+    return c;
 };
 
 var u = function (a) {
-    if (a instanceof Array) return a;
+    if (Array.isArray(a)) {
+        return a;
+    }
     var b = [];
-    return $.each(a, function (a, c) {
-        b = t(u(c), b)
-    }), b
+    Object.values(a).forEach(function (value) {
+        if (typeof value === 'object' && value !== null) {
+            b = t(u(value), b);
+        }
+    });
+    return b;
 };
-var percentagedata = d3.partition()
-    .size([2 * Math.PI, rad]);
+
 
 var arc = d3.arc()
     .startAngle(function (d) {
@@ -284,37 +334,82 @@ var arc = d3.arc()
 var coloralternative = 0;
 initbreadcrumb();
 
+function formatDataForHierarchy(data) {
+    if (Array.isArray(data)) {
+        return {
+            value: data.reduce((a, b) => a + b, 0)
+        };
+    } else if (typeof data === 'object') {
+        var children = Object.keys(data).map(key => {
+            return {
+                name: key,
+                ...formatDataForHierarchy(data[key])
+            };
+        });
+        return {
+            children: children
+        };
+    }
+    return {
+        value: 0
+    };
+}
+var colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+function calculatePercentages(node) {
+    console.log(node);
+    if (node.children) {
+        node.children.forEach(calculatePercentages);
+    } else {
+        if (node.data.value instanceof Array) {
+            var total = node.data.value.reduce((a, b) => a + b, 0);
+            node.data._percentage = node.data.value.map(v => (v / total) * 100);
+        }
+    }
+}
+
+
 d3.json("../../Data/sunburst_data_2017_to_2022.json").then(function (skillsdata) {
-    console.log(skillsdata[0])
-    var root = d3.hierarchy(skillsdata[0])
-        .sort(null)
+    var formattedData = formatDataForHierarchy(skillsdata.Skills);
+
+    console.log("Formatted data:", formattedData);
+    var root = d3.hierarchy(formattedData)
         .sum(function (d) {
             return d.value;
         })
-        .children(function (d) {
-            if (Array.isArray(d.value)) {
-                d._percentage = d.value;
-                return d3.entries([d.value[d.value.length - 1]]);
-            } else {
-                d._percentage = u(d.value);
-                return isNaN(d.value) ? d3.entries(d.value) : null;
-            }
+        .sort(function (a, b) {
+            return b.value - a.value;
         });
 
-    var path = sunburst.selectAll("g")
-        .data(percentagedata(root))
-        .enter()
-        .append("g")
+    console.log(root);
+    calculatePercentages(root);
+    console.log(root);
+
+    // Now create the sunburst data
+    var partition = d3.partition()
+        .size([2 * Math.PI, rad])(root);
+
+    // Bind the partitioned data to the path elements
+    var path = sunburst.selectAll("path")
+        .data(root.descendants())
+        .enter().append("path")
         .attr("display", function (d) {
             return d.depth ? null : "none";
+        }) // hide inner ring
+        .attr("d", arc)
+        .style("stroke", "#fff")
+        .style("fill", function (d) {
+            return colorScale(d.data.name);
         });
+
+    console.log("Number of path elements:", path.size());
 
     path.append("path")
         .attr("d", arc)
         .attr("stroke", "#fff")
         .attr("fill", function (d) {
-            d._color = q(d);
-            return d._color;
+            d.data._color = q(d);
+            return d.data._color;
         })
         .attr("fill-rule", "evenodd")
         .attr("display", function (d) {
