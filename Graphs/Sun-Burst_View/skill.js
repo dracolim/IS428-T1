@@ -120,20 +120,20 @@ function k(a) {
 }
 var l;
 var chart = function (d3) {
-    function processdata(data) {
-        var b = [];
-        // It's important to make sure the `i` array covers all years
-        var years = [2017, 2018, 2019, 2020, 2021, 2022]; 
-        data._percentage.forEach(function (percentage, index) {
-            if (index < years.length) {
-                b.push({
-                    p: percentage,
-                    date: years[index]
-                });
-            }
-        });
-        return b;
-    }
+        function processdata(data) {
+            var b = [];
+            // It's important to make sure the `i` array covers all years
+            var years = [2017, 2018, 2019, 2020, 2021, 2022];
+            data._percentage.forEach(function (percentage, index) {
+                if (index < years.length) {
+                    b.push({
+                        p: percentage,
+                        date: years[index]
+                    });
+                }
+            });
+            return b;
+        }
 
         function c(b, c) {
             j.domain(d3.extent(b, function (a) {
@@ -188,16 +188,16 @@ var chart = function (d3) {
                 bottom: 30,
                 left: 50
             },
-            g = 500 - rect.left - rect.right,
+            g = 600 - rect.left - rect.right,
             h = 400 - rect.top - rect.bottom,
             i = [2017, 2018, 2019, 2020, 2021, 2022],
-            j = d3.scale.linear().range([0, g]),
+            j = d3.scale.linear().range([0, g]).domain([2016.5, 2022.5]),
             k = d3.scale.linear().range([h, 0]),
             bottomtick = d3
             .svg
             .axis()
             .scale(j)
-            .tickValues([2017, 2018, 2019, 2020, 2021, 2022])
+            .tickValues(d3.range(2017, 2023))
             .tickFormat(d3.format(".0f"))
             .tickPadding(10)
             .tickSize(0)
