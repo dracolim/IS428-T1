@@ -1,6 +1,6 @@
 function initchart() {
     var data = {
-        _percentage: [0, 0, 0],
+        _percentage: [0, 0, 0,0,0,0],
         children: null,
         value: 0,
         key: "",
@@ -46,7 +46,7 @@ function initbreadcrumb() {
     d3
         .select("#skills-chart-breadcrumb")
         .append("svg:svg")
-        .attr("width", 420)
+        .attr("width", 400)
         .attr("height", 50)
         .attr("class", "trail")
 }
@@ -184,11 +184,11 @@ var chart = function (d3) {
         var chart = {},
             rect = {
                 top: 20,
-                right: 20,
+                right: 80,
                 bottom: 30,
                 left: 50
             },
-            g = 600 - rect.left - rect.right,
+            g = 500 - rect.left - rect.right,
             h = 400 - rect.top - rect.bottom,
             i = [2017, 2018, 2019, 2020, 2021, 2022],
             j = d3.scale.linear().range([0, g]).domain([2016.5, 2022.5]),
