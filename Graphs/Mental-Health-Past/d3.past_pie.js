@@ -11,7 +11,7 @@ const svg5 = d3.select("#past_pie")
     .attr("width", width_past_pie)
     .attr("height", heigh_past_pie)
     .append("g")
-    .attr("transform", `translate(${width_past_pie / 2 - 50}, ${heigh_past_pie / 2})`);
+    .attr("transform", `translate(${width_past_pie / 2 - 50}, ${height / 2})`);
 
 const data_past = {
     Yes: 67.7,

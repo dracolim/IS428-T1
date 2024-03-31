@@ -84,20 +84,9 @@
                         <li>
                             <a href="#overview"
                                 class="block py-2 px-3 text-white bg-red-600 rounded md:bg-transparent md:text-white md:p-0"
-                                aria-current="page">Overview</a>
-                        </li>
-                        <li>
-                            <a href="#territory"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">Territory</a>
-                        </li>
-                        <li>
-                            <a href="#gender"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">
-                                Gender</a>
-                        </li>
-                        <li>
-                            <a href="#age"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0">Age</a>
+                                aria-current="page">Family History (FH) of mental illness vs Willingness to discuss with
+                                peers
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -118,64 +107,50 @@
 
             <!-- OVERVIEW -->
             <div class="grid gap-4" id="overview">
-                <div class="p-5 col-span-full items-center ">
+                <div class="p-5 col-span-full items-center bg-white border border-gray-200 rounded-lg shadow">
 
                     <div class="flex justify-between items-center">
-                        <h5 class="mb-3 text-xl font-bold tracking-tight text-gray-900">Demographics Overview</h5>
+                        <h5 class="text-2xl font-bold tracking-tight text-gray-900">Family History (FH) of mental
+                            illness vs Willingness to discuss with peers
+                        </h5>
                     </div>
 
                     <div class=" ">
-                        <div id="sunburst_view" align="center" class="p-4"><iframe allowtransparency="true" frameborder="0"
-                            overflow="hidden" scrolling="no" src="../Graphs/Sun-Burst_View/index_sunburst.html" height="100%"
-                            width="100%"></iframe></div>
+                        <div id="sunburst_view" align="center" class="p-4"><iframe allowtransparency="true"
+                                frameborder="0" overflow="hidden" scrolling="no"
+                                src="../Graphs/Sun-Burst_View/index_sunburst.html" height="100%" width="100%"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- MORE -->
-            <div class="mt-3">
-                <div class="mt-5">
-                    <p class="font-bold text-lg">
-                        Overview
+            <div class="">
+                <p class="font-bold text-2xl mb-2 mt-8">
+                    Findings
+                </p>
+                <p class="text-lg">
+                    Discussing mental illness has increased overtime, especially among people with a family history of
+                    mental illness.
+
+                    <p class="text-lg mt-3">
+                        Men were found to be more willing to open up about their mental illness. However, there's an
+                        upward trend for women to open up as well over the years.
                     </p>
-                    <p class="text-md">
-                        From the parallel sets visualization, it shows the dataset pertains to individuals segmented by
-                        their employment status in tech companies, geographical
-                        location, age, and gender.
-                        <p class="text-md mt-3">
-                            The overview
-                            presents an opportunity to delve deeper into the nuances of how different demographics
-                            within
-                            the tech sector engage with mental health services and their specific needs.
-                        </p>
-                        <!-- TERRITORY -->
-                        <p class="mt-6" id="territory">
-                            <p class="font-bold text-lg">
-                                Territory
-                            </p>
-                            <div class="mb-4">
-                                <div id="choropleth"></div>
-                            </div>
-                            <p class="text-md">
-                                The majority of the individuals work in tech companies, particularly
-                                in the United States, which has the highest representation. The majority from the United
-                                States of America are also currently working in medium or large companies.
-                            </p>
-                            <p class="text-md mt-3">
-                                Since the majority are from the United States of America, we zoomed in further to
-                                identify cities that had the most respondents.
-                                <p class="italic font-bold text-lg mx-4 my-4 text-red-600">
-                                    California and Illinois had the highest number of respondents with 147 from
-                                    California and 136 from Illinois.
-                                </p>
 
-                            </p>
-                        </p>
-
+                    <p class="text-lg mb-3">
+                        <img src="../Images/asian family-cuate.png" class="h-auto max-w-xs mx-auto">
+                        People without family history show more reservations in discussing their mental illness with
+                        peers.
                     </p>
-                </div>
 
+                    <p class="italic font-bold text-lg mx-4 mb-8 text-red-600">
+                        This shows that many individuals do not have a safe space within their social circles and that
+                        we should cultivate a safe space for the sharing of mental health within the workplace.
+                    </p>
+                </p>
             </div>
+
         </div>
     </div>
 
