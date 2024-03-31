@@ -22,7 +22,7 @@ let tooltip_country2 = d3.select("#past")
     .attr("id", "tooltip");
 
 // Parse the Data
-d3.csv("past_mental_health.csv").then(function (data) {
+d3.csv("../../Data/past_mental_health.csv").then(function (data) {
     const subgroups = data.columns.slice(1);
 
     // Add X axis
