@@ -6,7 +6,7 @@ const margin_past = {
         left: 60
     },
     width_past = 500 - margin_past.left - margin_past.right,
-    height_past = 400 - margin_current.top - margin_current.bottom;
+    height_past = 400 - margin_past.top - margin_past.bottom;
 
 // append the svg4 object to the body of the page
 const svg4 = d3.select("#past")
