@@ -120,16 +120,20 @@ function k(a) {
 }
 var l;
 var chart = function (d3) {
-        function processdata(data) {
-            var b = [],
-                c = 0;
-            return data._percentage.forEach(function (a) {
-                c <= i.length && (b.push({
-                    p: a,
-                    date: i[c]
-                }), c++)
-            }), b
-        }
+    function processdata(data) {
+        var b = [];
+        // It's important to make sure the `i` array covers all years
+        var years = [2017, 2018, 2019, 2020, 2021, 2022]; 
+        data._percentage.forEach(function (percentage, index) {
+            if (index < years.length) {
+                b.push({
+                    p: percentage,
+                    date: years[index]
+                });
+            }
+        });
+        return b;
+    }
 
         function c(b, c) {
             j.domain(d3.extent(b, function (a) {
